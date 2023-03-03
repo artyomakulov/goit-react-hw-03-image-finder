@@ -7,11 +7,20 @@ const PARAMS = 'image_type=photo&orientation=horizontal&per_page=12'
 
 // https://pixabay.com/api/?q=cat&page=1&key=25323007-3d609b483f4fcb74c4bf2a361&image_type=photo&orientation=horizontal&per_page=12
 
-export default function fetchApi(imageName, page) {
-    return axios.get(`${BASE_URL}?q=${imageName}&page=${page}&key=${KEY}&${PARAMS}`).then((responce) => {
+export default function fetchApi(imageName, numberPage) {
+    return axios
+    .get(`${BASE_URL}?q=${imageName}&page=${numberPage}&key=${KEY}&${PARAMS}`)
+    .then((responce) => {
         if (responce.data.hits.length > 0) {
             return responce.data.hits;
         }
         return Promise.reject(new Error(`there is no picture`));
     })
 }
+
+
+// function fetchApi(imageName, numberPage) {
+//     return fetch(`https://pixabay.com/api/?q=${imageName}&page=${numberPage}&key=25323007-3d609b483f4fcb74c4bf2a361&image_type=photo&orientation=horizontal&per_page=12`)
+// }
+        
+// export default  fetchApi 
