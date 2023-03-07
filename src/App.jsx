@@ -1,6 +1,7 @@
 import React from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
-import ImageGalleryItem from './components/ImageGalleryItem/ImageGalleryItem'
+// import ImageGallery from './components/ImageGallery/ImageGallery';
+import ImageGallery from 'components/ItemGallery/ItemGallery';
 // import * as API from './components/services/serviceAPI';
 // import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
@@ -108,7 +109,7 @@ handleSearchFormSubmit = searchName => {
         {/* {this.state.isLoading && <h1>загружаем</h1>}
         {this.state.searchName && <div>тут будет картинка когдато</div> } */}
         <Searchbar onSubmit={this.handleSearchFormSubmit}/>
-        <ImageGalleryItem searchName={this.state.searchName}/>
+        <ImageGallery searchName={this.state.searchName}/>
     </div>
 
   )
