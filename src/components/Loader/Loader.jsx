@@ -1,11 +1,12 @@
-import { Audio } from 'react-loader-spinner';
+import { MagnifyingGlass } from 'react-loader-spinner';
 
-<Audio
+<MagnifyingGlass
+  visible={true}
   height="80"
   width="80"
-  radius="9"
-  color="green"
-  ariaLabel="loading"
-  wrapperStyle
-  wrapperClass
+  ariaLabel="MagnifyingGlass-loading"
+  wrapperStyle={{}}
+  wrapperClass="MagnifyingGlass-wrapper"
+  glassColor = '#c0efff'
+  color = '#e15b64'
 />

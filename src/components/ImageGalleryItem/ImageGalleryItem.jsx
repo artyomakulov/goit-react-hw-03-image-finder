@@ -1,5 +1,7 @@
 import { Component } from "react";
 import ImageGallery from "components/ItemGallery/ItemGallery";
+import { MagnifyingGlass } from 'react-loader-spinner';
+
 export default class ImageGalleryItem extends Component {
   
   state = {
@@ -33,8 +35,17 @@ export default class ImageGalleryItem extends Component {
     if (status === 'idle') {
       return <div>введите имя</div>
     }
-    if (status === 'prending') {
-      return <div>загружаем</div>
+    if (status === 'pending') {
+      return <MagnifyingGlass
+      visible={true}
+      height="80"
+      width="80"
+      ariaLabel="MagnifyingGlass-loading"
+      wrapperStyle={{}}
+      wrapperClass="MagnifyingGlass-wrapper"
+      glassColor = '#c0efff'
+      color = '#e15b64'
+    />
     }
     if (status === 'rejected') {
       return <h1>{error.message}</h1>
