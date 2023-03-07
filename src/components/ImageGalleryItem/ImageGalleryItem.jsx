@@ -1,6 +1,10 @@
 import { Component } from "react";
-import ImageGallery from "components/ItemGallery/ItemGallery";
+import ImageGallery from "components/ItemGallery/ImageGallery";
 import { MagnifyingGlass } from 'react-loader-spinner';
+import serviceAPI from "components/services/serviceAPI";
+import css from './ImageGalleryItem.module.css'
+
+
 
 export default class ImageGalleryItem extends Component {
   
@@ -15,13 +19,9 @@ export default class ImageGalleryItem extends Component {
     if (prevName !== nextName) {
       console.log("изменилось имя поиска")
       this.setState({status: 'pending'})
-      fetch(`https://pixabay.com/api/?q=${nextName}&page=1&key=25323007-3d609b483f4fcb74c4bf2a361&image_type=photo&orientation=horizontal&per_page=12`)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error(`Нет такой картинки`));
-      } )
+
+      serviceAPI
+      .getData(nextName)
       .then(hits => this.setState({ ...hits, status: 'resolved' }))
       .catch(error => this.setState({ error, status: 'rejected' }))
       
@@ -55,8 +55,8 @@ export default class ImageGalleryItem extends Component {
       <ImageGallery>
       {hits.map(({...hits}) => {
         return (
-          <li key={hits.id}>
-          <img width='250px' height='250px' src={hits.webformatURL} alt={hits.tags}/>
+          <li className={css.ImageGalleryItem} key={hits.id}>
+          <img className={css.ImageGalleryItem_image} width='250px' height='250px' src={hits.webformatURL} alt={hits.tags}/>
           </li>
         )
       })}
