@@ -5,8 +5,7 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
-import { MagnifyingGlass } from  'react-loader-spinner'
-
+import { MagnifyingGlass } from  'react-loader-spinner';
 
 export class App extends Component {
  state = {
@@ -59,7 +58,7 @@ export class App extends Component {
  
 
   render () {
-    const stateValue = this.state;
+    const {searchingName, images, spinerView, showModal, largeImgForModal} = this.state;
   
     return (
       <div className={css.App}>
@@ -68,11 +67,11 @@ export class App extends Component {
        onSubmit={this.handleForSubmit}></Searchbar>
       
       <ImageGallery 
-      value={stateValue.searchingName} 
-      renderArray={stateValue.images} 
+      value={searchingName} 
+      renderArray={images} 
       onClick={this.onImageClick}/>
 
-      {(stateValue.spinerView) && 
+      {(spinerView) && 
         <MagnifyingGlass
         visible={true}
         height="80"
@@ -84,13 +83,13 @@ export class App extends Component {
         color = '#3f51b5'
       />}  
 
-      {stateValue.images !== null && 
+      {images !== null && 
       <Button onClick={this.onButtonClikRender} />}
-      {stateValue.showModal &&
-      <Modal 
-      imageForModal={stateValue.largeImgForModal} 
-      onClose={this.toggleModal}/>}
 
+      {showModal &&
+      <Modal 
+      imageForModal={largeImgForModal} 
+      onClose={this.toggleModal}/>}
       </div>
     );
   }

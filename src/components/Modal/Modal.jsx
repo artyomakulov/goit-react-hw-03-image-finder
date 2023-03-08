@@ -28,10 +28,8 @@ export default class Modal extends Component {
     }
   };
 
-
-
     render () {
-        const imageForModal = this.props.imageForModal
+        const { imageForModal } = this.props
       
         return createPortal(<div 
         className={css.overlay} 
