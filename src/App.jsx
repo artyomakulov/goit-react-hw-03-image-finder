@@ -5,7 +5,8 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
-import { MagnifyingGlass } from  'react-loader-spinner';
+import { MagnifyingGlass } from  'react-loader-spinner'
+
 
 export class App extends Component {
  state = {
@@ -85,11 +86,11 @@ export class App extends Component {
 
       {images !== null && 
       <Button onClick={this.onButtonClikRender} />}
-
       {showModal &&
       <Modal 
       imageForModal={largeImgForModal} 
       onClose={this.toggleModal}/>}
+
       </div>
     );
   }
