@@ -16,7 +16,7 @@ export default class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  OnBackdropClick = e => {
+  onBackdropClick = e => {
      if(e.target === e.currentTarget) {
       this.props.onClose()
     } 
@@ -33,7 +33,7 @@ export default class Modal extends Component {
       
         return createPortal(<div 
         className={css.overlay} 
-        onClick={this.OnBackdropClick}>
+        onClick={this.onBackdropClick}>
         <div className={css.modal}>
           <img src={imageForModal} alt="" />
         </div>
