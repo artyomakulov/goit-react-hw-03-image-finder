@@ -26,8 +26,13 @@ const ImageGalleryItem = ({ imageArray, onClick }) => {
 };
 
 ImageGalleryItem.propTypes = {
-  onClick: PropTypes.func,
-  imageArray: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
+  ImageGallery: PropTypes.arrayOf(
+    PropTypes.shape({
+      webformatURL: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default ImageGalleryItem;

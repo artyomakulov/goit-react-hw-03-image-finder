@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fetchImages from './components/services/serviceAPI';
+import fetchImages from './services/serviceAPI';
 import css from 'App.module.css';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
@@ -17,6 +17,14 @@ export class App extends Component {
     spinerView: false,
   };
 
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
   componentDidUpdate(prevState, prevProps) {
     if (prevProps.searchingName !== this.state.searchingName) {
       this.setState({ spinerView: true });
@@ -30,7 +38,6 @@ export class App extends Component {
           })
         );
     }
-    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   onButtonClikRender = e => {
