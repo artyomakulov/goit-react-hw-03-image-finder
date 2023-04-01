@@ -6,18 +6,18 @@ import css from 'components/ImageGallery/ImageGallery.module.css';
 
 class ImageGallery extends Component {
   render() {
-    const imagesArray = this.props;
+    const { renderArray, onClick } = this.props;
 
     return (
       <ul className={css.imageGallery}>
-        {imagesArray.renderArray !== null && (
-          <>
+        {renderArray !== null &&
+          renderArray.map(({ id, webformatURL }) => (
             <ImageGalleryItem
-              imageArray={imagesArray.renderArray}
-              onClick={imagesArray.onClick}
+              key={id}
+              webformatURL={webformatURL}
+              onClick={onClick}
             />
-          </>
-        )}
+          ))}
       </ul>
     );
   }
