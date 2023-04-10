@@ -11,11 +11,12 @@ class ImageGallery extends Component {
     return (
       <ul className={css.imageGallery}>
         {renderArray !== null &&
-          renderArray.map(({ id, webformatURL }) => (
+          renderArray.map(({ id, webformatURL, largeImageURL }) => (
             <ImageGalleryItem
               key={id}
               webformatURL={webformatURL}
               onClick={onClick}
+              largeImageURL={largeImageURL}
             />
           ))}
       </ul>

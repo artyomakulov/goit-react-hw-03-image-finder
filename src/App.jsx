@@ -60,12 +60,9 @@ export class App extends Component {
     this.setState({ searchingName });
   };
 
-  onImageClick = e => {
-    const stateForBigImg = this.state.images;
+  onImageClick = largeImageURL => {
     this.setState({
-      largeImgForModal: stateForBigImg.find(
-        image => image.id === Number(e.currentTarget.id)
-      ).largeImageURL,
+      largeImgForModal: largeImageURL,
       showModal: true,
     });
   };
@@ -77,15 +74,14 @@ export class App extends Component {
   };
 
   render() {
-    const { searchingName, images, spinerView, showModal, largeImgForModal } =
-      this.state;
+    const { images, spinerView, showModal, largeImgForModal } = this.state;
 
     return (
       <div className={css.App}>
         <Searchbar onSubmit={this.handleForSubmit}></Searchbar>
 
         <ImageGallery
-          value={searchingName}
+          // value={searchingName}
           renderArray={images}
           onClick={this.onImageClick}
         />
